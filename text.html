@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header with Language Toggle</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1e40af;
+            --secondary-color: rgba(255, 255, 255, 0.1);
+            --accent-color: #f59e0b;
+            --white-color: #ffffff;
+            --dark-divider-color: rgba(255, 255, 255, 0.1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header CSS from your file */
+        header.main-header {
+            position: relative;
+            z-index: 100;
+        }
+
+        header.main-header .header-sticky {
+            position: relative;
+            top: 0;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(30px);
+            border-bottom: 1px solid var(--dark-divider-color);
+        }
+
+        .navbar {
+            padding: 20px 0;
+            align-items: center;
+        }
+
+        .navbar-brand {
+            padding: 0;
+            margin: 0;
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--white-color);
+            text-decoration: none;
+        }
+
+        .main-menu .nav-menu-wrapper {
+            flex: 1;
+            text-align: center;
+        }
+
+        .main-menu .nav-menu-wrapper > ul {
+            align-items: center;
+            display: inline-flex;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .main-menu ul li {
+            margin: 0 5px;
+            position: relative;
+        }
+
+        .main-menu ul li a {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 14px 15px !important;
+            color: var(--white-color);
+            text-transform: capitalize;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            display: block;
+        }
+
+        .main-menu ul li a:hover,
+        .main-menu ul li a:focus {
+            color: var(--accent-color);
+        }
+
+        /* Language Toggle Styles */
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            margin-left: 15px;
+            margin-right: 15px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--white-color);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .lang-btn:hover {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--white-color);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: var(--accent-color);
+            border-color: var(--accent-color);
+            color: var(--white-color);
+        }
+
+        .header-btn {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .btn-default {
+            background: var(--accent-color);
+            color: var(--white-color);
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-default:hover {
+            background: transparent;
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* RTL/LTR Support */
+        .rtl-mode {
+            direction: rtl;
+        }
+
+        .ltr-mode {
+            direction: ltr;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 991px) {
+            .main-menu {
+                display: none;
+            }
+            
+            .mobile-controls {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+            
+            .language-toggle {
+                margin: 0;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .mobile-controls {
+                display: none;
+            }
+        }
+
+        /* Demo content */
+        .demo-content {
+            padding: 50px 0;
+            text-align: center;
+            color: var(--white-color);
+        }
+
+        .demo-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .demo-content p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header class="main-header">
+        <div class="header-sticky">
+            <nav class="navbar navbar-expand-lg">
+                <div class="container">
+                    <!-- Logo Start -->
+                    <a class="navbar-brand" href="./">
+                        <i class="fas fa-taxi"></i> تاكسي أوكرانيا
+                    </a>
+                    <!-- Logo End -->
+
+                    <!-- Main Menu Start -->
+                    <div class="collapse navbar-collapse main-menu">
+                        <div class="nav-menu-wrapper">
+                            <ul class="navbar-nav" id="menu">
+                                <li class="nav-item"><a class="nav-link" href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                                <li class="nav-item"><a class="nav-link" href="about.html" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+                                <li class="nav-item"><a class="nav-link" href="index.html#service" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+                                <li class="nav-item"><a class="nav-link" href="index.html#drivers" data-ar="انضم كسائق" data-en="Join as Driver">انضم كسائق</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Language Toggle -->
+                        <div class="language-toggle">
+                            <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">
+                                <i class="fas fa-globe"></i>
+                                <span id="langText">EN</span>
+                            </button>
+                        </div>
+                        
+                        <!-- زر الحجز -->
+                        <div class="header-btn">
+                            <a href="https://taxifukraine.ondelight.app/" class="btn-default" id="bookBtn" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+                        </div>
+                    </div>
+
+                    <!-- Mobile Controls -->
+                    <div class="mobile-controls d-lg-none">
+                        <div class="language-toggle">
+                            <button class="lang-btn" onclick="toggleLanguage()">
+                                <i class="fas fa-globe"></i>
+                                <span id="langTextMobile">EN</span>
+                            </button>
+                        </div>
+                        <button class="lang-btn" type="button" data-bs-toggle="collapse" data-bs-target="#mobileMenu">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+
+                    <!-- Mobile Menu -->
+                    <div class="collapse" id="mobileMenu">
+                        <div class="card card-body mt-3" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link text-white" href="index.html" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                                <li class="nav-item"><a class="nav-link text-white" href="about.html" data-ar="من نحن" data-en="About Us">من نحن</a></li>
+                                <li class="nav-item"><a class="nav-link text-white" href="index.html#service" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+                                <li class="nav-item"><a class="nav-link text-white" href="index.html#drivers" data-ar="انضم كسائق" data-en="Join as Driver">انضم كسائق</a></li>
+                                <li class="nav-item"><a class="nav-link text-white" href="#" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a></li>
+                                <li class="nav-item mt-2">
+                                    <a href="https://taxifukraine.ondelight.app/" class="btn-default d-block text-center" data-ar="احجز الآن" data-en="Book Now">احجز الآن</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Demo Content -->
+    <div class="demo-content">
+        <div class="container">
+            <h1 id="demoTitle" data-ar="مرحباً بكم في تاكسي أوكرانيا" data-en="Welcome to Ukraine Taxi">مرحباً بكم في تاكسي أوكرانيا</h1>
+            <p id="demoText" data-ar="خدمة النقل الأكثر موثوقية في أوكرانيا" data-en="The most reliable transportation service in Ukraine">خدمة النقل الأكثر موثوقية في أوكرانيا</p>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let isArabic = true;
+
+        function toggleLanguage() {
+            isArabic = !isArabic;
+            const html = document.documentElement;
+            const body = document.body;
+            
+            // Toggle language and direction
+            if (isArabic) {
+                html.lang = 'ar';
+                html.dir = 'rtl';
+                body.classList.remove('ltr-mode');
+                body.classList.add('rtl-mode');
+                document.getElementById('langText').textContent = 'EN';
+                document.getElementById('langTextMobile').textContent = 'EN';
+                
+                // Update navbar brand
+                document.querySelector('.navbar-brand').innerHTML = '<i class="fas fa-taxi"></i> تاكسي أوكرانيا';
+            } else {
+                html.lang = 'en';
+                html.dir = 'ltr';
+                body.classList.remove('rtl-mode');
+                body.classList.add('ltr-mode');
+                document.getElementById('langText').textContent = 'عر';
+                document.getElementById('langTextMobile').textContent = 'عر';
+                
+                // Update navbar brand
+                document.querySelector('.navbar-brand').innerHTML = '<i class="fas fa-taxi"></i> Ukraine Taxi';
+            }
+            
+            // Update all elements with data attributes
+            updateLanguageContent();
+        }
+
+        function updateLanguageContent() {
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            
+            elements.forEach(element => {
+                const arabicText = element.getAttribute('data-ar');
+                const englishText = element.getAttribute('data-en');
+                
+                if (isArabic) {
+                    element.textContent = arabicText;
+                } else {
+                    element.textContent = englishText;
+                }
+            });
+        }
+
+        // Save language preference
+        function saveLanguagePreference() {
+            // In a real application, you would use localStorage
+            // localStorage.setItem('language', isArabic ? 'ar' : 'en');
+        }
+
+        // Load language preference
+        function loadLanguagePreference() {
+            // In a real application, you would check localStorage
+            // const savedLang = localStorage.getItem('language');
+            // if (savedLang === 'en') {
+            //     toggleLanguage();
+            // }
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadLanguagePreference();
+        });
+
+        // Auto-close mobile menu when clicking a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                const mobileMenu = document.getElementById('mobileMenu');
+                if (mobileMenu.classList.contains('show')) {
+                    bootstrap.Collapse.getInstance(mobileMenu).hide();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

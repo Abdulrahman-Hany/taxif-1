@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الشروط - TaxiF Terms</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Epilogue:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+        
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Mouse Cursor Css File -->
+    <link rel="stylesheet" href="css/mousecursor.css">
+    <style>
+        :root {
+            --primary-color: #1c1e1e;
+            --secondary-color: #2b2b2b;
+            --text-color: #CECECE;
+            --accent-color: #fabe12;
+            --white-color: #FFFFFF;
+            --divider-color: #FFFFFF2E;
+            --dark-divider-color: #ECECEC;
+            --error-color: #efbc2268;
+            --default-font: "DM Sans", sans-serif;
+            --accent-font: "Epilogue", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--default-font);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-color);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(10px) rotate(240deg);
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(28, 30, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--divider-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(28, 30, 30, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-containers {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--accent-font);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Main containers */
+        .containers {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: var(--accent-font);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .company-info {
+            background: rgba(250, 190, 18, 0.1);
+            border: 1px solid rgba(250, 190, 18, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .company-name {
+            font-family: var(--accent-font);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .company-address {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: rgba(43, 43, 43, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--divider-color);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(250, 190, 18, 0.1);
+            border-color: rgba(250, 190, 18, 0.5);
+        }
+
+        .section-title {
+            font-family: var(--accent-font);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            border-radius: 2px;
+        }
+
+        .subsection-title {
+            font-family: var(--accent-font);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white-color);
+            margin: 2rem 0 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--divider-color);
+        }
+
+        .content-text {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .data-list {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .data-list li {
+            position: relative;
+            padding: 0.8rem 0 0.8rem 2rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .data-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            transform: scale(0);
+            animation: bulletPop 0.5s ease-out forwards;
+        }
+
+        .data-list li:nth-child(1)::before {
+            animation-delay: 0.1s;
+        }
+
+        .data-list li:nth-child(2)::before {
+            animation-delay: 0.2s;
+        }
+
+        .data-list li:nth-child(3)::before {
+            animation-delay: 0.3s;
+        }
+
+        .data-list li:nth-child(4)::before {
+            animation-delay: 0.4s;
+        }
+
+        .data-list li:hover {
+            color: var(--white-color);
+            transform: translateX(10px);
+        }
+
+        /* Article Section */
+        .article-section {
+            background: rgba(43, 43, 43, 0.2);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid rgba(250, 190, 18, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .article-section:hover {
+            border-color: rgba(250, 190, 18, 0.4);
+            background: rgba(43, 43, 43, 0.4);
+        }
+
+        .article-title {
+            font-family: var(--accent-font);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .article-number {
+            background: var(--accent-color);
+            color: var(--primary-color);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, rgba(250, 190, 18, 0.1) 0%, rgba(250, 190, 18, 0.05) 100%);
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .important-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(250, 190, 18, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .notice-title {
+            font-family: var(--accent-font);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notice-title::before {
+            content: '⚠';
+            font-size: 1.5rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+            border: 2px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(250, 190, 18, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-title {
+            font-family: var(--accent-font);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(250, 190, 18, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(250, 190, 18, 0.3);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(250, 190, 18, 0.2);
+            box-shadow: 0 10px 30px rgba(250, 190, 18, 0.2);
+        }
+
+        .contact-item strong {
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: var(--accent-font);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--divider-color);
+            margin-top: 4rem;
+            color: var(--text-color);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bulletPop {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--white-color));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .containers {
+                padding: 100px 1rem 2rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Intersection Observer Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>  
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header class="header" id="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo Start -->
+                <a class="navbar-brand" href="./">
+                    <img src="images/logo.svg" alt="Logo">
+                </a>
+                <!-- Logo End -->
+
+                <!-- Main Menu Start -->
+                <div class="collapse navbar-collapse main-menu">
+                    <div class="nav-menu-wrapper">
+                        <ul class="navbar-nav mr-auto" id="menu">
+                            <li class="nav-item"><a class="nav-link" href="./">الرئيسية</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">من نحن</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">خدماتنا</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">انضم كسائق</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+                        </ul>
+                    </div>
+                    <!-- زر الحجز -->
+                    <div class="header-btn d-inline-flex">
+                        <a href="booking.html" class="btn-default">احجز الآن</a>
+                    </div>
+                </div>
+
+                <!-- Main Menu End -->
+                <div class="navbar-toggle"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="containers">
+        <section class="hero" style="margin-top: 80px;">
+            <h1 class="hero-title">الشروط </h1>
+            <p class="hero-subtitle">شكراً لاهتمامك بموقع بوابة الويب وتطبيقات الجوال الخاصة بنا. يرجى قراءة هذه الشروط  بعناية قبل استخدام خدماتنا
+            </p>
+
+            <div class="company-info">
+                <div class="company-name">TAXIF CORPORATION</div>
+                <div class="company-address">85 Great Portland St, London, W1W 7LT, UK</div>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">1. أحكام عامة</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">1.1</span>
+                    نطاق التطبيق
+                </div>
+                <p class="content-text">
+                    باستخدام أي وظيفة أو خدمات للبوابة <span class="highlight">https://taxif.com/</span> وتطبيقات الهاتف المحمول "TaxiF" لنظامي التشغيل iOS و Android، يخضع أي فرد (المشار إليه فيما يلي باسم "المستخدم")، بغض النظر عن وضعه القانوني وأهليته المدنية، للقواعد والقيود المحددة في اتفاقية المستخدم هذه.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">1.2</span>
+                    الموافقة على الشروط
+                </div>
+                <p class="content-text">
+                    يمنح المستخدم موافقته على الامتثال لجميع أحكام هذه الاتفاقية أثناء التسجيل في البوابة أو تطبيقات الجوال. في حالة الاختلاف مع أي حكم من أحكام هذه الاتفاقية، لا يُسمح للمستخدم باستخدام خدمة المسؤول.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">1.3</span>
+                    تعديل الاتفاقية
+                </div>
+                <p class="content-text">
+                    يجوز للمسؤول تعديل الاتفاقية أو استكمالها أو تعديلها بأي طريقة أخرى دون إشعار مسبق من المستخدم.
+                </p>
+            </div>
+
+            <div class="important-notice">
+                <div class="notice-title">التعريفات المهمة</div>
+                <ul class="data-list">
+                    <li><strong>المسؤول:</strong> شركة TAXIF CORPORATION، وهي شركة تأسست بموجب قوانين المملكة المتحدة</li>
+                    <li><strong>البوابة:</strong> البوابة الإلكترونية https://taxif.com/</li>
+                    <li><strong>تطبيق الهاتف المحمول:</strong> تطبيق للأجهزة المحمولة "TaxiF"</li>
+                    <li><strong>المستخدم:</strong> أي فرد يتمتع بقدرة قانونية يبلغ من العمر 18 عاماً على الأقل</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">2. تسجيل المستخدم</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">2.1</span>
+                    متطلبات التسجيل
+                </div>
+                <p class="content-text">
+                    لاستخدام بعض خدمات البوابة وتطبيقات الهاتف المحمول، يلتزم المستخدم بإجراء التسجيل، مما يؤدي إلى إنشاء حساب فريد للمستخدم للوصول إلى خدمات البوابة وتطبيقات الهاتف المحمول.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">2.2</span>
+                    دقة المعلومات
+                </div>
+                <p class="content-text">
+                    يجب على المستخدم تقديم معلومات دقيقة عن نفسه أثناء ملء استمارة الطلب أثناء التسجيل.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">2.3</span>
+                    المعلومات الخاطئة
+                </div>
+                <p class="content-text">
+                    إذا قدم المستخدم معلومات خاطئة أثناء التسجيل أو في وقت لاحق، يحق للمسؤول تعليق أو إنهاء حساب (تسجيل) المستخدم دون إشعار أو الحصول على أي موافقة.
+                </p>
+            </div>
+
+            <div class="important-notice">
+                <div class="notice-title">حماية البيانات الشخصية</div>
+                <p class="content-text">
+                    يتعهد المسؤول بضمان جميع التدابير اللازمة المنصوص عليها في التشريعات المعمول بها في المملكة المتحدة ومتطلبات المعقولية وحسن النية من أجل حماية البيانات الشخصية المرسلة إلى المسؤول أثناء تسجيل المستخدم.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">2.8</span>
+                    أمان كلمة المرور
+                </div>
+                <p class="content-text">
+                    عند التسجيل على البوابة وتطبيقات الهاتف المحمول، يجب على المستخدم إدخال كلمة مرور فريدة. يتحمل المستخدم المسؤولية الكاملة عن موثوقية كلمة المرور وحماية الحساب الخاص.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">3. استخدام التطبيقات دون تسجيل</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">3.1</span>
+                    الخدمات المتاحة
+                </div>
+                <p class="content-text">
+                    يمكن للمستخدم استخدام خدمات معينة من البوابة وتطبيقات الهاتف المحمول دون تسجيل.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">3.2</span>
+                    الالتزام بالشروط
+                </div>
+                <p class="content-text">
+                    بغض النظر عن حقيقة التسجيل، يتعهد المستخدم بالامتثال لشروط هذه الاتفاقية أثناء استخدام خدمات البوابة وتطبيقات الهاتف المحمول.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">3.3</span>
+                    قيود الاستخدام
+                </div>
+                <p class="content-text">
+                    يحق للمسؤول تقييد استخدام بعض خدمات البوابة وتطبيقات الهاتف المحمول من قبل المستخدم دون موافقة مسبقة من المستخدم على شروط هذه الاتفاقية.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">4. البيانات الشخصية</h2>
+
+            <div class="important-notice">
+                <div class="notice-title">سياسة الخصوصية المنفصلة</div>
+                <p class="content-text">
+                    يتم تنظيم جميع المشكلات المتعلقة بجمع البيانات الشخصية للمستخدمين واستخدامها ومعالجتها من خلال بيان الخصوصية المنفصل الموجود على البوابة وتطبيق الهاتف المحمول.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">5. خدمات التطبيقات المحمولة</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">5.1</span>
+                    الغرض من الخدمات
+                </div>
+                <p class="content-text">
+                    الغرض من البوابة وتطبيقات الجوال هو توفير خدمات المعلومات للمستخدمين فقط، بما في ذلك الوصول إلى معلومات المجال العام، والمعلومات التي يتم توفيرها بشكل قانوني من قبل أطراف ثالثة، وعناصر الملكية الفكرية، والتي يتم استخدامها بشكل قانوني من خلال وضعها على البوابة وتطبيقات الهاتف المحمول.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">5.2</span>
+                    المحتوى المحظور
+                </div>
+                <p class="content-text">
+                    لا تحتوي البوابة وتطبيقات الهاتف المحمول على الغرض من نشر معلومات سرية أو معلومات مقيدة أو معلومات أطراف ثالثة، ولا يُقصد بها نشرها، والتي لم تحصل البوابة وتطبيقات الهاتف المحمول على التصاريح والسلطات المستحقة.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">5.4</span>
+                    الأطراف الثالثة
+                </div>
+                <p class="content-text">
+                    المسؤول أو TaxiF أو الممثل الآخر، المفوض من قبل المسؤول على أساس تعاقدي، يشمل أطرافاً ثالثة تقدم و/أو تقدم خدمات للمستخدمين من خلال البوابة وتطبيقات الهاتف المحمول. يقوم المسؤول بتزويد هذه الأطراف الثالثة بالمعلومات والترويج دون إعطاء أي ضمانات للمستخدمين فيما يتعلق بجودة الخدمات المقدمة.
+                </p>
+            </div>
+
+            <div class="important-notice">
+                <div class="notice-title">التأمين الإجباري</div>
+                <p class="content-text">
+                    يمنح المستخدم موافقته الكاملة وغير المشروطة وغير القابلة للإلغاء على التأمين على حياته أثناء النقل، التي يقوم بها أطراف ثالثة. يتم إجراء التأمين على نفقة TaxiF الخاصة، ولن يكون المستخدم ملزماً بدفع أي مدفوعات تأمين.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">6. حدود استخدام التطبيقات</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">6.1</span>
+                    نشر المحتوى
+                </div>
+                <p class="content-text">
+                    أثناء استخدام خدمات البوابة وتطبيقات الجوال، يجوز للمستخدم نشر المعلومات وعناصر الملكية الفكرية. يضمن المستخدم أنه يمتلك مثل هذا المحتوى أو حقوق الملكية له و/أو أنه حصل على جميع التراخيص اللازمة من أطراف ثالثة لنشر هذا المحتوى.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">6.2</span>
+                    المحتوى المحظور
+                </div>
+                <p class="content-text">
+                    يوافق المستخدم على عدم استخدام خدمات البوابة وتطبيقات الهاتف المحمول لنقل المعلومات أو نشرها بأي وسيلة، يكون محتواها:
+                </p>
+                <ul class="data-list">
+                    <li>غير قانوني أو يهدد أو يشوه أو ينتهك حقوق الملكية الفكرية</li>
+                    <li>ينشر الكراهية و/أو التمييز ضد الأشخاص بأي سبب</li>
+                    <li>يحتوي على مخالفات ومطالبات ضد مستخدمين آخرين أو المسؤول</li>
+                    <li>يحتوي على محتوى جنسي أو إباحي</li>
+                </ul>
+            </div>
+
+            <h3 class="subsection-title">المحتوى المحظور تفصيلياً:</h3>
+
+            <ul class="data-list">
+                <li>تقييد حقوق الأقليات</li>
+                <li>التمثيل الزائف كشخص آخر أو ممثل شركة بدون حقوق كافية</li>
+                <li>المواد التي لا يحق للمستخدم الكشف عنها وفقاً للقانون</li>
+                <li>المواد التي تنتهك حقوق براءات الاختراع أو العلامات التجارية أو الأسرار التجارية</li>
+                <li>الإعلانات العشوائية والرسائل المتسلسلة والدعوة للخدمات المالية</li>
+                <li>رموز الكمبيوتر المصممة لاختراق أو تدمير أو تقييد وظائف أي جهاز</li>
+                <li>الإعلان عن المخدرات</li>
+                <li>المشاركات التي تحتوي على ملاحظات ومقترحات وقحة ومسيئة</li>
+            </ul>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">7. الحقوق والضمانات الحصرية للمدير</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">7.1</span>
+                    الملكية الفكرية
+                </div>
+                <p class="content-text">
+                    تعد البوابة وتطبيقات الهاتف المحمول وأي من مكوناتها، بما في ذلك شفرة المصدر وعناصر التصميم والنص وعناصر الملكية الفكرية الأخرى ملكية حصرية للمسؤول.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">7.2</span>
+                    قيود الاستخدام
+                </div>
+                <p class="content-text">
+                    لا توفر هذه الاتفاقية أي حقوق أو أذونات للمستخدم لاستخدام البوابة وتطبيقات الهاتف المحمول بوسائل بخلاف توفيرها وفقاً لوظيفة البوابة وتطبيقات الهاتف المحمول.
+                </p>
+            </div>
+
+            <div class="important-notice">
+                <div class="notice-title">الخدمة "كما هي"</div>
+                <p class="content-text">
+                    البوابة متاحة للمستخدمين وفقاً لمبدأ "كما هي". لا يتحمل المسؤول أي ضمانات للتشغيل السلس لخدمات Portal و Mobile Apps وحسن توقيتها ودقتها.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">8. حدود المسؤولية الإدارية</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">8.1</span>
+                    إخلاء المسؤولية
+                </div>
+                <p class="content-text">
+                    المدير و TaxiF والممثلون الآخرون، المفوضون من قبل المدير ليسوا مسؤولين عن أي ضرر يلحق بالحياة والصحة، أي خسائر مباشرة و/أو غير مباشرة، أضرار مادية و/أو غير مادية، مسؤوليات أو خسائر متكبدة نتيجة:
+                </p>
+                <ul class="data-list">
+                    <li>استخدام أو عدم استخدام المعلومات المنشورة على البوابة وتطبيقات الجوال</li>
+                    <li>عدم اكتمال أو توفير خدمات المعلومات بشكل غير مناسب</li>
+                    <li>نقص الفرص للوصول إلى الخدمات أو استخدامها</li>
+                    <li>عدم تقديم أو تقديم خدمات بشكل غير لائق من قبل أطراف ثالثة</li>
+                </ul>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">8.2</span>
+                    الوصول للخدمات
+                </div>
+                <p class="content-text">
+                    لا يضمن المسؤول الوصول المنتظم أو غير المشروط إلى الخدمات المقدمة على البوابة وتطبيقات الهاتف المحمول. القوة القاهرة والعوامل الأخرى، التي قد يكون منعها أو إزالتها التي تتجاوز قدرة المسؤول تعطل عمل البوابة وتطبيقات الهاتف المحمول.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">9. أحكام ختامية</h2>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">9.1</span>
+                    طبيعة الاتفاقية
+                </div>
+                <p class="content-text">
+                    هذه الاتفاقية هي عقد بين المستخدم والمسؤول فيما يتعلق بإجراءات استخدام خدمات البوابة وتطبيقات الهاتف المحمول وتحل محل جميع الاتفاقيات السابقة بين المستخدم والمسؤول.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">9.2</span>
+                    القانون المطبق
+                </div>
+                <p class="content-text">
+                    تخضع هذه الاتفاقية وتفسر وفقاً لتشريعات المملكة المتحدة. تتم تسوية القضايا بخلاف تلك المنظمة بموجب هذه الاتفاقية وفقاً للتشريعات المعمول بها في المملكة المتحدة.
+                </p>
+            </div>
+
+            <div class="article-section">
+                <div class="article-title">
+                    <span class="article-number">9.3</span>
+                    حماية المستهلك
+                </div>
+                <p class="content-text">
+                    بالنظر إلى الخدمات المجانية المقدمة بموجب هذه الاتفاقية، لا يمكن تطبيق قواعد حماية المستهلك، المنصوص عليها في تشريعات المملكة المتحدة، على العلاقات بين المستخدم والمسؤول.
+                </p>
+            </div>
+
+            <div class="important-notice">
+                <div class="notice-title">السياسات المرتبطة</div>
+                <p class="content-text">
+                    يؤكد المستخدم أنه أطلع على <span class="highlight">سياسة الدفع</span> و <span class="highlight">سياسة الإلغاء</span>، الموضوعة على البوابة وتطبيقات المحمول ويعطي موافقته الكاملة وغير مشروطة وغير قابلة للنقض للشروط الواردة فيها.
+                </p>
+            </div>
+        </section>
+
+        <section class="contact-section fade-in" id="contact">
+            <div class="contact-content">
+                <h2 class="contact-title">معلومات الاتصال</h2>
+                <p class="content-text">
+                    للاستفسارات والدعم الفني وأي مشاكل متعلقة بالخدمة، يمكنكم التواصل معنا
+                </p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>الشركة</strong>
+                        <div>TAXIF CORPORATION</div>
+                    </div>
+                    <div class="contact-item">
+                        <strong>العنوان</strong>
+                        <div>85 Great Portland St<br>London, W1W 7LT, UK</div>
+                    </div>
+                </div>
+
+                <div class="contact-info" style="margin-top: 2rem;">
+                    <div class="contact-item">
+                        <strong>جهات الاتصال في المملكة المتحدة</strong>
+                        <div>TAXIF LLC</div>
+                    </div>
+                    <div class="contact-item">
+                        <strong>البريد الإلكتروني</strong>
+                        <div>support@taxif.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <strong>الدعم الفني</strong>
+                        <div>+447723538074</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p><strong>تاريخ مراجعة الاتفاقية: 25 مايو 2025</strong></p>
+            <p style="margin-top: 1rem; opacity: 0.7;">
+                © 2025 TaxiF Corporation. جميع الحقوق محفوظة.<br>
+                تم تصميم هذه الصفحة وفقاً لأعلى معايير الشفافية القانونية والوضوح.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Progress Bar Animation
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Fade In Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add Loading Animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Enhanced Hover Effects for Contact Items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(-5px) scale(1)';
+            });
+        });
+
+        // Enhanced Hover Effects for Article Sections
+        document.querySelectorAll('.article-section').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateX(10px)';
+                this.style.borderColor = 'rgba(250, 190, 18, 0.6)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateX(0)';
+                this.style.borderColor = 'rgba(250, 190, 18, 0.2)';
+            });
+        });
+
+        // Parallax Effect for Background Shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.floating-shape');
+
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.2);
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Dynamic Text Color Animation
+        const textElements = document.querySelectorAll('.content-text, .data-list li');
+        textElements.forEach(element => {
+            element.addEventListener('mouseenter', function () {
+                this.style.color = 'var(--white-color)';
+                this.style.transition = 'color 0.3s ease';
+            });
+
+            element.addEventListener('mouseleave', function () {
+                this.style.color = 'var(--text-color)';
+            });
+        });
+
+        // Article Number Animation
+        const articleNumbers = document.querySelectorAll('.article-number');
+        articleNumbers.forEach(number => {
+            number.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.2) rotate(360deg)';
+                this.style.transition = 'transform 0.5s ease';
+            });
+
+            number.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+    </script>
+</body>
+</html>

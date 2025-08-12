@@ -1,0 +1,1035 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سياسة الدفع - TaxiF Payment policy</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Epilogue:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+        
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <!-- Bootstrap Css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <!-- Main Custom Css -->
+    <link href="css/custom.css" rel="stylesheet" media="screen">
+    <!-- Font Awesome Icon Css-->
+    <link href="css/all.css" rel="stylesheet" media="screen">
+    <!-- Animated Css -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Mouse Cursor Css File -->
+    <link rel="stylesheet" href="css/mousecursor.css">
+    <style>
+        :root {
+            --primary-color: #1c1e1e;
+            --secondary-color: #2b2b2b;
+            --text-color: #CECECE;
+            --accent-color: #fabe12;
+            --white-color: #FFFFFF;
+            --divider-color: #FFFFFF2E;
+            --dark-divider-color: #ECECEC;
+            --error-color: #efbc2268;
+            --default-font: "DM Sans", sans-serif;
+            --accent-font: "Epilogue", sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--default-font);
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Background Animation */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.05;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--accent-color);
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 80px;
+            height: 80px;
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 60px;
+            height: 60px;
+            top: 40%;
+            left: 80%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            33% {
+                transform: translateY(-20px) rotate(120deg);
+            }
+
+            66% {
+                transform: translateY(10px) rotate(240deg);
+            }
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(28, 30, 30, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--divider-color);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            background: rgba(28, 30, 30, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-containers {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--accent-font);
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .logo:hover::after {
+            width: 100%;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        /* Main containers */
+        .containers {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 2rem 4rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .hero-title {
+            font-family: var(--accent-font);
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--white-color);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--white-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: slideInUp 1s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            animation: slideInUp 1s ease-out 0.2s both;
+        }
+
+        .company-info {
+            background: rgba(250, 190, 18, 0.1);
+            border: 1px solid rgba(250, 190, 18, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            animation: slideInUp 1s ease-out 0.4s both;
+        }
+
+        .company-name {
+            font-family: var(--accent-font);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .company-address {
+            color: var(--text-color);
+            font-size: 0.95rem;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: rgba(43, 43, 43, 0.3);
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--divider-color);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(250, 190, 18, 0.1);
+            border-color: rgba(250, 190, 18, 0.5);
+        }
+
+        .section-title {
+            font-family: var(--accent-font);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            border-radius: 2px;
+        }
+
+        .subsection-title {
+            font-family: var(--accent-font);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--white-color);
+            margin: 2rem 0 1rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--divider-color);
+        }
+
+        .content-text {
+            color: var(--text-color);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight {
+            color: var(--accent-color);
+            font-weight: 600;
+        }
+
+        .data-list {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .data-list li {
+            position: relative;
+            padding: 0.8rem 0 0.8rem 2rem;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .data-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            font-weight: bold;
+            transform: scale(0);
+            animation: bulletPop 0.5s ease-out forwards;
+        }
+
+        .data-list li:nth-child(1)::before {
+            animation-delay: 0.1s;
+        }
+
+        .data-list li:nth-child(2)::before {
+            animation-delay: 0.2s;
+        }
+
+        .data-list li:nth-child(3)::before {
+            animation-delay: 0.3s;
+        }
+
+        .data-list li:nth-child(4)::before {
+            animation-delay: 0.4s;
+        }
+
+        .data-list li:hover {
+            color: var(--white-color);
+            transform: translateX(10px);
+        }
+
+        /* Important Notice */
+        .important-notice {
+            background: linear-gradient(135deg, rgba(250, 190, 18, 0.1) 0%, rgba(250, 190, 18, 0.05) 100%);
+            border: 2px solid var(--accent-color);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .important-notice::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(250, 190, 18, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .notice-title {
+            font-family: var(--accent-font);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notice-title::before {
+            content: '💳';
+            font-size: 1.5rem;
+        }
+
+        .price-notice .notice-title::before {
+            content: '💰';
+        }
+
+        .security-notice .notice-title::before {
+            content: '🔒';
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            margin-top: 3rem;
+            border: 2px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(250, 190, 18, 0.1), transparent);
+            animation: rotate 10s linear infinite;
+        }
+
+        .contact-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-title {
+            font-family: var(--accent-font);
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            background: rgba(250, 190, 18, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(250, 190, 18, 0.3);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            background: rgba(250, 190, 18, 0.2);
+            box-shadow: 0 10px 30px rgba(250, 190, 18, 0.2);
+        }
+
+        .contact-item strong {
+            color: var(--accent-color);
+            display: block;
+            margin-bottom: 0.5rem;
+            font-family: var(--accent-font);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid var(--divider-color);
+            margin-top: 4rem;
+            color: var(--text-color);
+        }
+
+        .footer-text {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Payment Methods Grid */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .payment-method {
+            background: rgba(250, 190, 18, 0.05);
+            border: 1px solid rgba(250, 190, 18, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            background: rgba(250, 190, 18, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(250, 190, 18, 0.1);
+        }
+
+        .payment-method-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Pricing Info Box */
+        .pricing-info {
+            background: linear-gradient(135deg, rgba(43, 43, 43, 0.4), rgba(28, 30, 30, 0.4));
+            border-left: 4px solid var(--accent-color);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+        .pricing-title {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        /* Animations */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes bulletPop {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Scroll Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), var(--white-color));
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .containers {
+                padding: 100px 1rem 2rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Intersection Observer Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>  
+    </div>
+
+    <div class="progress-bar" id="progressBar"></div>
+
+    <header class="header" id="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <!-- Logo Start -->
+                <a class="navbar-brand" href="./">
+                    <img src="images/logo.svg" alt="Logo">
+                </a>
+                <!-- Logo End -->
+
+                <!-- Main Menu Start -->
+                <div class="collapse navbar-collapse main-menu">
+                    <div class="nav-menu-wrapper">
+                        <ul class="navbar-nav mr-auto" id="menu">
+                            <li class="nav-item"><a class="nav-link" href="./">الرئيسية</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">من نحن</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">خدماتنا</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.html">انضم كسائق</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+                        </ul>
+                    </div>
+                    <!-- زر الحجز -->
+                    <div class="header-btn d-inline-flex">
+                        <a href="booking.html" class="btn-default">احجز الآن</a>
+                    </div>
+                </div>
+
+                <!-- Main Menu End -->
+                <div class="navbar-toggle"></div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="containers">
+        <section class="hero" style="margin-top: 80px;">
+            <h1 class="hero-title">سياسة الدفع</h1>
+            <p class="hero-subtitle">نوفر لك طرق دفع متنوعة وآمنة لضمان تجربة سهلة ومريحة مع خدماتنا</p>
+
+            <div class="company-info">
+                <div class="company-name">TAXIF CORPORATION</div>
+                <div class="company-address">85 Great Portland St, London, W1W 7LT, UK</div>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">1. المصطلحات والتعاريف</h2>
+            
+            <div class="data-list">
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-color);">خدمة TaxiF أو الخدمة:</strong>
+                    <span style="color: var(--text-color);">النظام الإلكتروني (السوق) الذي يوفر إمكانية تبادل المعلومات بين المستهلكين ومقدمي خدمات نقل الركاب عبر البوابة أو تطبيقات الجوال.</span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-color);">المدير أو TAXIF CORPORATION:</strong>
+                    <span style="color: var(--text-color);">شركة تأسست بموجب قوانين المملكة المتحدة ومسجلة على العنوان: 85 Great Portland St, London, W1W 7LT, UK</span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-color);">البوابة:</strong>
+                    <span style="color: var(--text-color);">موقع <span class="highlight">https://taxif.com</span></span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-color);">تطبيق الهاتف المحمول:</strong>
+                    <span style="color: var(--text-color);">تطبيق للأجهزة المحمولة "TaxiF" لأنظمة التشغيل iOS و Android و Windows</span>
+                </div>
+
+                <div style="margin-bottom: 1.5rem;">
+                    <strong style="color: var(--accent-color);">البطاقة المصرفية:</strong>
+                    <span style="color: var(--text-color);">البطاقة المصرفية لنظام الدفع الدولي MasterCard، Visa</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">2. أحكام عامة</h2>
+
+            <div class="pricing-info">
+                <div class="pricing-title">💰 أسعار الخدمات</div>
+                <p class="content-text">
+                    يتم الدفع مقابل الخدمات وفقاً لأسعار التذاكر المدرجة في قسم «حول» تطبيق الهاتف المحمول وعلى البوابة.
+                </p>
+            </div>
+
+            <div class="important-notice price-notice">
+                <div class="notice-title">أسعار ارتفاع الطلب</div>
+                <p class="content-text">
+                    في فترات ارتفاع الطلب على الخدمات (أيام العطلات، الأحداث الجماعية، الاختناقات المرورية، وأحوال الطقس)، 
+                    يمكن زيادة أسعار الأجرة. سيتم إشعارك بالزيادة مع إمكانية تقليل الأجرة إلى المعدل الأساسي.
+                </p>
+            </div>
+
+            <h3 class="subsection-title">طرق الدفع المتاحة</h3>
+            <div class="payment-methods">
+                <div class="payment-method">
+                    <div class="payment-method-title">💵 الدفع النقدي</div>
+                    <p style="color: var(--text-color); font-size: 0.9rem;">التحويل المباشر للأموال النقدية إلى الشريك الذي قدم الخدمة</p>
+                </div>
+                <div class="payment-method">
+                    <div class="payment-method-title">💳 البطاقة المصرفية</div>
+                    <p style="color: var(--text-color); font-size: 0.9rem;">الدفع عبر بطاقات MasterCard و Visa (حسب التوفر الفني)</p>
+                </div>
+            </div>
+
+            <div class="important-notice security-notice">
+                <div class="notice-title">ضمان الأمان</div>
+                <p class="content-text">
+                    يعمل المسؤول كممثل مفوض للشريك ويتولى تنفيذ المساعدة التكنولوجية لضمان قبول المدفوعات عن طريق 
+                    البطاقات المصرفية بأمان تام.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">3. متطلبات ضمان الدفع بالبطاقات المصرفية</h2>
+
+            <p class="content-text">
+                لضمان إمكانية إجراء مدفوعات مقابل الخدمات المقدمة عن طريق بطاقة البنك، يلتزم المستخدم بما يلي:
+            </p>
+
+            <ul class="data-list">
+                <li>تثبيت تطبيق الهاتف المحمول أو الوصول إلى الخدمة عبر البوابة</li>
+                <li>التسجيل مع تحديد رقم الهاتف المحمول</li>
+                <li>إضافة البطاقة المصرفية في حقل «بطاقات الدفع» في ملف التعريف</li>
+                <li>إدخال بيانات البطاقة: رقم البطاقة، تاريخ الانتهاء، اسم المالك، والرمز الآمن (CVV2)</li>
+            </ul>
+
+            <div class="important-notice security-notice">
+                <div class="notice-title">حماية البيانات</div>
+                <p class="content-text">
+                    <strong>الخدمة لا تحفظ بيانات البطاقات المصرفية.</strong> يتم نقل جميع بيانات البطاقة إلى نموذج 
+                    الجهات الخارجية المصرح لها بتقديم الخدمات المالية باستخدام بروتوكولات الاتصال الآمنة.
+                </p>
+            </div>
+
+            <div class="pricing-info">
+                <div class="pricing-title">🔍 التحقق من البطاقة</div>
+                <p class="content-text">
+                    عند إضافة بطاقة البنك، سيتم حظر مبلغ 1.00 جنيه إسترليني للتحقق من صلاحية البطاقة، 
+                    وسيتم إلغاء الحظر فور تأكيد صحة البطاقة.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">4. ترتيب الدفع مقابل الخدمات</h2>
+
+            <p class="content-text">
+                يُسمح بالدفع مقابل الخدمات المقدمة عن طريق البطاقات المصرفية حصرياً في حالة:
+            </p>
+
+            <ul class="data-list">
+                <li>توفر الإمكانية الفنية للدفع الإلكتروني</li>
+                <li>امتثال المستخدم لمتطلبات ضمان إمكانية الدفع عبر البطاقات المصرفية</li>
+                <li>صحة وسلامة بيانات البطاقة المصرفية المقدمة</li>
+            </ul>
+
+            <div class="important-notice">
+                <div class="notice-title">في حالة تعذر الدفع الإلكتروني</div>
+                <p class="content-text">
+                    في حالة استحالة الدفع مقابل الخدمات عن طريق بطاقة البنك لأي سبب، 
+                    يكون المستخدم ملزماً بالدفع نقداً للشريك مقدم الخدمة.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">5. الضمانات والمسؤولية</h2>
+
+            <div class="important-notice security-notice">
+                <div class="notice-title">إخلاء المسؤولية</div>
+                <p class="content-text">
+                    لن يكون المسؤول مسؤولاً عن القدرة على العمل وضمان سلامة وأمان المعلومات المنقولة أثناء إجراء الدفعات عبر بطاقات المستخدم المصرفية، 
+                    وكذلك عن إجراءات البنك وأنظمة الدفع الدولية.
+                </p>
+            </div>
+
+            <h3 class="subsection-title">التزامات المستخدم</h3>
+            <ul class="data-list">
+                <li><strong>حماية الجهاز:</strong> عدم نقل الأجهزة المحمولة مع تطبيق الهاتف المحمول المثبت إلى أطراف ثالثة</li>
+                <li><strong>في حالة الفقدان:</strong> الاتصال بالبنك فوراً لحظر البطاقة المصرفية عند فقدان الجهاز</li>
+                <li><strong>المسؤولية:</strong> تعتبر أي إجراءات من الجهاز المحمول للمستخدم بمثابة إجراءات للمستخدم نفسه</li>
+                <li><strong>الإبلاغ:</strong> إخطار البنك والمسؤول فوراً في حالة الشك في استخدام غير مصرح به للبطاقة</li>
+            </ul>
+
+            <div class="pricing-info">
+                <div class="pricing-title">⚖️ العلاقات القانونية</div>
+                <p class="content-text">
+                    جميع العلاقات المتعلقة بالدفعات عن طريق بطاقات البنك تخضع لأحكام وشروط أنظمة الدفع الدولية، 
+                    واتفاقيات المستخدم مع البنك المُصدر للبطاقة المصرفية.
+                </p>
+            </div>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">6. السرية وحماية البيانات الشخصية</h2>
+
+            <div class="important-notice security-notice">
+                <div class="notice-title">سياسة السرية</div>
+                <p class="content-text">
+                    يؤكد المستخدم عند قبوله هذه السياسة أنه قد تعرّف وأكد موافقته دون قيد أو شرط على 
+                    <span class="highlight">سياسة السرية</span> الموضوعة على البوابة وتطبيق الجوال.
+                </p>
+            </div>
+
+            <p class="content-text">
+                نحن نلتزم بحماية خصوصيتك وأمان بياناتك الشخصية وفقاً لأعلى المعايير الدولية. 
+                جميع المعاملات المالية محمية بتقنيات التشفير المتقدمة.
+            </p>
+        </section>
+
+        <section class="content-section fade-in">
+            <h2 class="section-title">7. أحكام ختامية</h2>
+
+            <h3 class="subsection-title">المقاولون من الباطن</h3>
+            <p class="content-text">
+                يحق للمسؤول إشراك المقاولين من الباطن في أراضي دول معينة لأغراض الخدمة، 
+                ونقل المعلومات إلى الشركاء، ودعم المستخدمين ودعم الخدمة.
+            </p>
+
+            <h3 class="subsection-title">القانون المعمول به</h3>
+            <div class="pricing-info">
+                <div class="pricing-title">🏛️ التشريع المطبق</div>
+                <p class="content-text">
+                    تخضع هذه السياسة وتُفسر وفقاً لتشريعات المملكة المتحدة. 
+                    تتم تسوية جميع النزاعات المحتملة وفقاً للتشريعات المعمول بها في المملكة المتحدة.
+                </p>
+            </div>
+
+            <h3 class="subsection-title">تعديل السياسة</h3>
+            <div class="important-notice">
+                <div class="notice-title">حق التعديل</div>
+                <p class="content-text">
+                    يجوز للمسؤول تعديل السياسة أو استكمالها أو تعديلها بأي طريقة أخرى دون إشعار مسبق من المستخدم. 
+                    يتم نشر السياسة مع جميع التعديلات على البوابة وتطبيقات الهاتف المحمول.
+                </p>
+            </div>
+
+            <h3 class="subsection-title">صلاحية الأحكام</h3>
+            <p class="content-text">
+                في حالة اعتبار واحد أو أكثر من أحكام هذه السياسة غير صالح أو ليس له أي أثر قانوني لأي سبب من الأسباب، 
+                فإنه لا يؤثر على صحة أو قابلية تطبيق الأحكام الأخرى في السياسة.
+            </p>
+        </section>
+
+        <section class="contact-section fade-in" id="contact">
+            <div class="contact-content">
+                <h2 class="contact-title">تواصل معنا</h2>
+                <p class="content-text">
+                    يتم إرسال جميع الأسئلة والشكاوى المحتملة المتعلقة بسياسة الدفع إلى خدمة العملاء
+                </p>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <strong>الدعم الفني</strong>
+                        <div>+447723538074</div>
+                    </div>
+                    <div class="contact-item">
+                        <strong>البريد الإلكتروني</strong>
+                        <div>support@taxif.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <strong>العنوان</strong>
+                        <div>85 Great Portland St<br>London, W1W 7LT, UK</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-text">
+            <p><strong>تاريخ المراجعة: 17 مايو 2025</strong></p>
+            <p style="margin-top: 1rem; opacity: 0.7;">
+                © 2025 TaxiF Corporation. جميع الحقوق محفوظة.<br>
+                تم تصميم هذه الصفحة وفقاً لأعلى معايير الأمان والشفافية المالية.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Progress Bar Animation
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for Fade In Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add Loading Animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+        });
+
+        // Enhanced Hover Effects for Contact Items
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(-5px) scale(1)';
+            });
+        });
+
+        // Enhanced Hover Effects for Payment Methods
+        document.querySelectorAll('.payment-method').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+                this.style.boxShadow = '0 10px 30px rgba(250, 190, 18, 0.2)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(-3px) scale(1)';
+                this.style.boxShadow = '0 5px 20px rgba(250, 190, 18, 0.1)';
+            });
+        });
+
+        // Parallax Effect for Background Shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.floating-shape');
+
+            shapes.forEach((shape, index) => {
+                const speed = 0.5 + (index * 0.2);
+                shape.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+
+        // Dynamic Text Color Animation
+        const textElements = document.querySelectorAll('.content-text, .data-list li');
+        textElements.forEach(element => {
+            element.addEventListener('mouseenter', function () {
+                this.style.color = 'var(--white-color)';
+                this.style.transition = 'color 0.3s ease';
+            });
+
+            element.addEventListener('mouseleave', function () {
+                this.style.color = 'var(--text-color)';
+            });
+        });
+
+        // Interactive pricing info boxes
+        document.querySelectorAll('.pricing-info').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateX(5px)';
+                this.style.background = 'linear-gradient(135deg, rgba(43, 43, 43, 0.6), rgba(28, 30, 30, 0.6))';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateX(0px)';
+                this.style.background = 'linear-gradient(135deg, rgba(43, 43, 43, 0.4), rgba(28, 30, 30, 0.4))';
+            });
+        });
+    </script>
+</body>
+</html>
